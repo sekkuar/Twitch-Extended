@@ -6,43 +6,6 @@ local x, y = EntityGetTransform( entity_id )
 local types =
 {
 	{
-		name="slow",
-		AnimalAIComponent =
-		{
-			attack_ranged_entity_file="data/entities/projectiles/deck/bullet_slow.xml",
-			attack_ranged_frames_between=100,
-			attack_ranged_max_distance=120,
-		},
-		SpriteComponent =
-		{
-			image_file="data/enemies_gfx/homunculus_dark.xml",
-		},
-	},
-	{
-		name="punch",
-		AnimalAIComponent =
-		{
-			attack_ranged_enabled=false,
-			attack_melee_enabled=true,
-			attack_melee_damage_min=0.9,
-			attack_melee_damage_max=1.4,
-			attack_melee_action_frame=3,
-		},
-	},
-	{
-		name="fireball",
-		AnimalAIComponent =
-		{
-			attack_ranged_entity_file="data/entities/projectiles/grenade_scavenger.xml",
-			attack_ranged_frames_between=50,
-			attack_ranged_max_distance=200,
-		},
-		SpriteComponent =
-		{
-			image_file="data/enemies_gfx/homunculus_fire.xml",
-		},
-	},
-	{
 		name="laser",
 		AnimalAIComponent =
 		{
@@ -53,21 +16,6 @@ local types =
 		SpriteComponent =
 		{
 			image_file="data/enemies_gfx/homunculus_laser.xml",
-		},
-	},
-	{
-		name="healer",
-		AnimalAIComponent =
-		{
-			attack_ranged_entity_file="data/entities/projectiles/healshot.xml",
-			attack_ranged_frames_between=80,
-			attack_ranged_max_distance=80,
-			tries_to_ranged_attack_friends=true,
-			attack_if_damaged_probability=0,
-		},
-		SpriteComponent =
-		{
-			image_file="data/enemies_gfx/homunculus_heal.xml",
 		},
 	},
 }

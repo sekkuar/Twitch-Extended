@@ -112,6 +112,10 @@
 		
 		<Base file="data/entities/base_jetpack.xml" />
 	</Entity>
+	
+	<ItemPickUpperComponent
+		is_in_npc="0">
+	</ItemPickUpperComponent>
 
 	<AudioComponent
 		file="data/audio/Desktop/animals.bank"
@@ -125,7 +129,7 @@
 	</VariableStorageComponent>
 	
 	<LuaComponent
-		script_source_file="mods/twitch_extended/files/entities/animals/homunculus/homunculus_init.lua"
+		script_source_file="mods/twitch_extended/files/entities/animals/homunculus/homunculus_init_fireball.lua"
 		execute_every_n_frame="-1"
 		execute_on_added="1"
 		remove_after_executed="1"

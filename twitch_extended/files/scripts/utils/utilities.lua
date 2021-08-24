@@ -623,21 +623,21 @@ function spawn_enemy(username)
 end
 
 function spawn_homunculus(username, type_override)
-	types = {
-		"normal",
-		"slow",
-		"healer",
-		"fireball",
-		"laser",
-		"punch"
-	}
 	enemies_list = {
 		"mods/twitch_extended/files/entities/animals/homunculus/homunculus.xml",
 	}
+	
+	if(type_override ~= nil)then
+		enemies_list = {
+			"mods/twitch_extended/files/entities/animals/homunculus/homunculus_" .. type_override .. ".xml",
+		}
+	else
+		type_override = "random"
+	end
+	
 	local player = get_player()
 	if(player ~= nil)then
 		enemy = enemies_list[Random(1,table.getn(enemies_list))];
-	--	print("Summoned "..enemy)
 		local drone = spawn_item(enemy, 10, 50)
 
 		local nametag = EntityCreateNew("nametag")
@@ -648,7 +648,7 @@ function spawn_homunculus(username, type_override)
 		EntitySetTransform(nametag, x, y)
 
 		local herd_id
-						
+		
 		edit_component( player, "GenomeDataComponent", function(comp,vars)
 			herd_id = ComponentGetValue2( comp, "herd_id" )
 		end)
@@ -658,33 +658,9 @@ function spawn_homunculus(username, type_override)
 				ComponentSetValue2( comp, "herd_id", herd_id )
 			end)
 		end
-
-		our_type = types[Random(1, #types)]
-
-		if(type_override ~= nil)then
-			our_type = type_override
-		end
-
-		if(our_type ~= "normal")then
-			local storages = EntityGetComponent( drone, "VariableStorageComponent" )
-			if ( storages ~= nil ) then
-				for j,comp in ipairs( storages ) do
-					local name = ComponentGetValue2( comp, "name" )
-					if ( name == "type" ) then
-						ComponentSetValue2( comp, "value_string", our_type )
-						break
-					end
-				end
-			else
-				type_store = EntityAddComponent2( drone, "VariableStorageComponent", {
-					name = "type",
-					value_string = our_type
-				})
-			end
-		end
-
-		text_above_entity( drone, username, 0 )
-
+		
+		text_above_entity( drone, username, -25 )
+		
 		EntityAddTag( drone, "has_nametag")
 	end
 end
