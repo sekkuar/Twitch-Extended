@@ -1947,6 +1947,22 @@ append_events = {
 			spawn_item("mods/twitch_extended/files/entities/misc/tentacle_orb.xml", 100, 200)
 		end,
 	},
+	{
+	id = "TWITCH_EXTENDED_GOLDEN_SHOWER",
+	ui_name = "$twitch_extended_golden_shower",
+	ui_description = "$twitch_extended_golden_shower_description",
+	ui_icon = "",
+	ui_author = "sekkuar",
+	weight = 1.0,
+	kind = STREAMING_EVENT_NEUTRAL,
+	action = function(event)
+		for i,entity_id in pairs( get_players() ) do
+			local x, y = EntityGetTransform( entity_id )
+			
+			EntityLoad("mods/twitch_extended/files/entities/particles/sea_urine.xml", x, y -256)
+		end
+	end,
+},
 
 }
 
